@@ -1,0 +1,14 @@
+{
+    "description": "A way to embed Neos into other applications",
+    "type": "library",
+    "name": "sandstorm/neosapiclient",
+    "license": "MIT",
+    "require": {
+        "firebase/php-jwt": "^v6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sandstorm\\NeosApiClient\\": "src/"
+        }
+    }
+}

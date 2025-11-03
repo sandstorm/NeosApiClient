@@ -2,23 +2,26 @@
 
 namespace Sandstorm\NeosApiClient\Internal;
 
-final readonly class CreateOrUseExistingUserLoginCommand implements LoginCommandInterface
+/**
+ * @internal
+ */
+final readonly class SwitchBaseWorkspaceLoginCommand implements LoginCommandInterface
 {
 
-    public function __construct(public string $userName)
+    public function __construct(public string $baseWorkspace)
     {
     }
 
     static public function fromStdClass(\stdClass $data): self
     {
-        return new self($data->userName);
+        return new self($data->baseWorkspace);
     }
 
     public function jsonSerialize(): array
     {
         return [
             'command' => get_class($this),
-            'userName' => $this->userName,
+            'baseWorkspace' => $this->baseWorkspace,
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Sandstorm\NeosApiClient;
 
+use Sandstorm\NeosApiClient\Internal\NodeCreation;
 use Sandstorm\NeosApiClient\Internal\SecureApiUriBuilder;
 use Sandstorm\NeosApiClient\Internal\SwitchBaseWorkspaceLoginCommand;
 use Sandstorm\NeosApiClient\Internal\SwitchDimensionLoginCommand;
@@ -28,9 +29,9 @@ final readonly class ContentEditingBuilder
         return new self($this->apiUriBuilder->withCommand(new SwitchDimensionLoginCommand($dimensions)));
     }
 
-    public function node(string $nodeId): self
+    public function node(string $nodeId, ?NodeCreation $createIfNotExisting = null): self
     {
-        return new self($this->apiUriBuilder->withCommand(new SwitchEditedNodeLoginCommand($nodeId)));
+        return new self($this->apiUriBuilder->withCommand(new SwitchEditedNodeLoginCommand($nodeId, $createIfNotExisting)));
     }
 
     public function buildUri()

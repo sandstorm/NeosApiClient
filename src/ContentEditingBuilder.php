@@ -2,6 +2,7 @@
 
 namespace Sandstorm\NeosApiClient;
 
+use Sandstorm\NeosApiClient\Internal\AdaptNeosUiLoginCommand;
 use Sandstorm\NeosApiClient\Internal\NodeCreation;
 use Sandstorm\NeosApiClient\Internal\SecureApiUriBuilder;
 use Sandstorm\NeosApiClient\Internal\SwitchBaseWorkspaceLoginCommand;
@@ -32,6 +33,17 @@ final readonly class ContentEditingBuilder
     public function node(string $nodeId, ?NodeCreation $createIfNotExisting = null): self
     {
         return new self($this->apiUriBuilder->withCommand(new SwitchEditedNodeLoginCommand($nodeId, $createIfNotExisting)));
+    }
+
+    public function hideMainMenu(): self
+    {
+        return new self($this->apiUriBuilder->withCommand(new AdaptNeosUiLoginCommand(showMainMenu: false)));
+    }
+
+    public function minimalUi(): self
+    {
+        // to be extended once more elements can be hidden
+        return new self($this->apiUriBuilder->withCommand(new AdaptNeosUiLoginCommand(showMainMenu: false)));
     }
 
     public function buildUri()

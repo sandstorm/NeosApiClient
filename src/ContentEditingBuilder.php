@@ -4,6 +4,7 @@ namespace Sandstorm\NeosApiClient;
 
 use Sandstorm\NeosApiClient\Internal\AdaptNeosUiLoginCommand;
 use Sandstorm\NeosApiClient\Internal\NodeCreation;
+use Sandstorm\NeosApiClient\Internal\PreviewMode;
 use Sandstorm\NeosApiClient\Internal\SecureApiUriBuilder;
 use Sandstorm\NeosApiClient\Internal\SwitchBaseWorkspaceLoginCommand;
 use Sandstorm\NeosApiClient\Internal\SwitchDimensionLoginCommand;
@@ -51,6 +52,13 @@ final readonly class ContentEditingBuilder
         return new self($this->apiUriBuilder->withCommand(new AdaptNeosUiLoginCommand(
             showMainMenu: false,
             showLeftSideBar: false
+        )));
+    }
+
+    public function editPreviewMode(PreviewMode $previewMode): self
+    {
+        return new self($this->apiUriBuilder->withCommand(new AdaptNeosUiLoginCommand(
+            previewMode: $previewMode,
         )));
     }
 

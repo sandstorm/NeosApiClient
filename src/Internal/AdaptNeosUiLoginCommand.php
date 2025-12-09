@@ -7,6 +7,7 @@ class AdaptNeosUiLoginCommand implements LoginCommandInterface
     public function __construct(
         public ?bool $showMainMenu = null,
         public ?bool $showLeftSideBar = null,
+        public ?bool $showEditPreviewDropDown = null,
         public ?PreviewMode $previewMode = null,
     )
     {
@@ -15,7 +16,7 @@ class AdaptNeosUiLoginCommand implements LoginCommandInterface
     static public function fromStdClass(\stdClass $data): self
     {
         $previewMode = $data->previewMode !== null ? PreviewMode::fromString($data->previewMode) : null;
-        return new self($data->showMainMenu, $data->showLeftSideBar, $previewMode);
+        return new self($data->showMainMenu, $data->showLeftSideBar, $data->showEditPreviewDropDown, $previewMode);
     }
 
     public function jsonSerialize(): array
@@ -24,6 +25,7 @@ class AdaptNeosUiLoginCommand implements LoginCommandInterface
             'command' => get_class($this),
             'showMainMenu' => $this->showMainMenu,
             'showLeftSideBar' => $this->showLeftSideBar,
+            'showEditPreviewDropDown' => $this->showEditPreviewDropDown,
             'previewMode' => $this->previewMode,
         ];
     }

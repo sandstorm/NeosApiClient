@@ -51,13 +51,19 @@ final readonly class ContentEditingBuilder
         return new self($this->apiUriBuilder->withCommand(new AdaptNeosUiLoginCommand(showEditPreviewDropDown: false)));
     }
 
+    public function hideDimensionSwitcher(): self
+    {
+        return new self($this->apiUriBuilder->withCommand(new AdaptNeosUiLoginCommand(showDimensionSwitcher: false)));
+    }
+
     public function minimalUi(): self
     {
         // to be extended once more elements can be hidden
         return new self($this->apiUriBuilder->withCommand(new AdaptNeosUiLoginCommand(
             showMainMenu: false,
             showLeftSideBar: false,
-            showEditPreviewDropDown: false
+            showEditPreviewDropDown: false,
+            showDimensionSwitcher: false
         )));
     }
 

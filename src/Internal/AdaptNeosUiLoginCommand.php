@@ -8,6 +8,7 @@ class AdaptNeosUiLoginCommand implements LoginCommandInterface
         public ?bool $showMainMenu = null,
         public ?bool $showLeftSideBar = null,
         public ?bool $showEditPreviewDropDown = null,
+        public ?bool $showDimensionSwitcher = null,
         public ?PreviewMode $previewMode = null,
     )
     {
@@ -16,7 +17,13 @@ class AdaptNeosUiLoginCommand implements LoginCommandInterface
     static public function fromStdClass(\stdClass $data): self
     {
         $previewMode = $data->previewMode !== null ? PreviewMode::fromString($data->previewMode) : null;
-        return new self($data->showMainMenu, $data->showLeftSideBar, $data->showEditPreviewDropDown, $previewMode);
+        return new self(
+            showMainMenu: $data->showMainMenu,
+            showLeftSideBar: $data->showLeftSideBar,
+            showEditPreviewDropDown: $data->showEditPreviewDropDown,
+            showDimensionSwitcher: $data->showDimensionSwitcher,
+            previewMode: $previewMode
+        );
     }
 
     public function jsonSerialize(): array
@@ -26,6 +33,7 @@ class AdaptNeosUiLoginCommand implements LoginCommandInterface
             'showMainMenu' => $this->showMainMenu,
             'showLeftSideBar' => $this->showLeftSideBar,
             'showEditPreviewDropDown' => $this->showEditPreviewDropDown,
+            'showDimensionSwitcher' => $this->showDimensionSwitcher,
             'previewMode' => $this->previewMode,
         ];
     }

@@ -56,6 +56,11 @@ final readonly class ContentEditingBuilder
         return new self($this->apiUriBuilder->withCommand(new AdaptNeosUiLoginCommand(showDimensionSwitcher: false)));
     }
 
+    public function hidePublishDropDown(): self
+    {
+        return new self($this->apiUriBuilder->withCommand(new AdaptNeosUiLoginCommand(showPublishDropDown: false)));
+    }
+
     public function minimalUi(): self
     {
         // to be extended once more elements can be hidden
@@ -63,7 +68,8 @@ final readonly class ContentEditingBuilder
             showMainMenu: false,
             showLeftSideBar: false,
             showEditPreviewDropDown: false,
-            showDimensionSwitcher: false
+            showDimensionSwitcher: false,
+            showPublishDropDown: false
         )));
     }
 

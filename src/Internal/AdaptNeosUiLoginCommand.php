@@ -9,6 +9,7 @@ class AdaptNeosUiLoginCommand implements LoginCommandInterface
         public ?bool $showLeftSideBar = null,
         public ?bool $showEditPreviewDropDown = null,
         public ?bool $showDimensionSwitcher = null,
+        public ?bool $showPublishDropDown = null,
         public ?string $notifyOnPublishTarget = null,
         public ?PreviewMode $previewMode = null,
     )
@@ -23,6 +24,7 @@ class AdaptNeosUiLoginCommand implements LoginCommandInterface
             showLeftSideBar: $data->showLeftSideBar,
             showEditPreviewDropDown: $data->showEditPreviewDropDown,
             showDimensionSwitcher: $data->showDimensionSwitcher,
+            showPublishDropDown: $data->showPublishDropDown,
             notifyOnPublishTarget: $data->notifyOnPublishTarget,
             previewMode: $previewMode
         );
@@ -36,6 +38,7 @@ class AdaptNeosUiLoginCommand implements LoginCommandInterface
             'showLeftSideBar' => $this->showLeftSideBar,
             'showEditPreviewDropDown' => $this->showEditPreviewDropDown,
             'showDimensionSwitcher' => $this->showDimensionSwitcher,
+            'showPublishDropDown' => $this->showPublishDropDown,
             'notifyOnPublishTarget' => $this->notifyOnPublishTarget,
             'previewMode' => $this->previewMode,
         ];

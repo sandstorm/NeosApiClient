@@ -206,6 +206,11 @@ final readonly class ContentEditingBuilder
         return new self($this->apiUriBuilder->withCommand(new AdaptNeosUiLoginCommand(showDimensionSwitcher: false)));
     }
 
+    public function hidePublishDropDown(): self
+    {
+        return new self($this->apiUriBuilder->withCommand(new AdaptNeosUiLoginCommand(showPublishDropDown: false)));
+    }
+
     /**
      * When the generated URI is opened in an IFrame and this option is set, the website containing the IFrame will be
      * notified through `postMessage()`, when publishing finished in Neos.
@@ -271,7 +276,8 @@ final readonly class ContentEditingBuilder
             showMainMenu: false,
             showLeftSideBar: false,
             showEditPreviewDropDown: false,
-            showDimensionSwitcher: false
+            showDimensionSwitcher: false,
+            showPublishDropDown: false
         )));
     }
 

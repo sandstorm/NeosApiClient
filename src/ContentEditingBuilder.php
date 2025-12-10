@@ -56,6 +56,11 @@ final readonly class ContentEditingBuilder
         return new self($this->apiUriBuilder->withCommand(new AdaptNeosUiLoginCommand(showDimensionSwitcher: false)));
     }
 
+    public function notifyOnPublish(string $targetOrigin): self
+    {
+        return new self($this->apiUriBuilder->withCommand(new AdaptNeosUiLoginCommand(notifyOnPublishTarget: $targetOrigin)));
+    }
+
     public function minimalUi(): self
     {
         // to be extended once more elements can be hidden

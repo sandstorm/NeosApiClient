@@ -176,6 +176,11 @@ final readonly class ContentEditingBuilder
         return new self($this->apiUriBuilder->withCommand(new AdaptNeosUiLoginCommand(showLeftSideBar: false)));
     }
 
+    public function hideDocumentTree(): self
+    {
+        return new self($this->apiUriBuilder->withCommand(new AdaptNeosUiLoginCommand(showDocumentTree: false)));
+    }
+
     /**
      * This will hide the Component to switch the preview mode within the Neos UI. Can be used together with the
      * {@link editPreviewMode} method to fix a specific preview mode.
@@ -270,6 +275,7 @@ final readonly class ContentEditingBuilder
         return new self($this->apiUriBuilder->withCommand(new AdaptNeosUiLoginCommand(
             showMainMenu: false,
             showLeftSideBar: false,
+            showDocumentTree: false,
             showEditPreviewDropDown: false,
             showDimensionSwitcher: false
         )));
